@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Validação de Certificados - GEMICRO / UFSJ</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 40px; text-align: center; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+.header img { height: 100px; }
+.title { font-size: 28px; font-weight: bold; margin-bottom: 30px; }
+input { padding: 8px; width: 300px; font-size: 16px; }
+button { padding: 8px 14px; font-size: 16px; margin-left: 10px; cursor: pointer; }
+#resultado { margin-top: 25px; font-size: 18px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <img src="menu-logo_menor.png" alt="UFSJ">
+  <img src="Logo_oficial.jpg" alt="GEMICRO">
+</div>
+
+<div class="title">Sistema de Validação de Certificados – GEMICRO / UFSJ</div>
+
+<p>Digite o código de validação do certificado:</p>
+
+<input type="text" id="codigoInput" placeholder="Ex.: GEMICRO-UFSJ-000001">
+<button onclick="validarCodigo()">Validar</button>
+
+<div id="resultado"></div>
+
+<script>
+let dados = [];
+
+fetch("dados-certificados.json")
+  .then(r => r.json())
+  .then(j => dados = j);
+
+function validarCodigo() {
+    const codigo = document.getElementById("codigoInput").value.trim();
+    const div = document.getElementById("resultado");
+
+    if (!codigo) {
+        div.innerHTML = "<span style='color:#b00;'>❗ Digite um código.</span>";
+        return;
+    }
+
+    const item = dados.find(x => x.codigo.toUpperCase() === codigo.toUpperCase());
+
+    if (item) {
+        div.innerHTML = "<span style='color:green;'>✔ Certificado válido.</span><br>Emitido para: <b>" 
+                        + item.nome + "</b>";
+    } else {
+        div.innerHTML = "<span style='color:#b00;'>✖ Código inválido.</span>";
+    }
+}
+</script>
+
+</body>
+</html>
