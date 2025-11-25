@@ -115,6 +115,20 @@ function buscarNome() {
         div.innerHTML = "<span style='color:#b00;'>✖ Nenhum certificado encontrado para este nome.</span>";
     }
 }
+
+// Permitir Enter para buscar pelo nome
+document.getElementById("nomeInput").addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+        buscarNome();
+    }
+});
+
+// Permitir Enter para validar pelo código
+document.getElementById("codigoInput").addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+        validarCodigo();
+    }
+});
 </script>
 
 <hr style="margin-top: 40px;">
