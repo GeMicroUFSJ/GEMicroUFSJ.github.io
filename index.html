@@ -33,9 +33,24 @@ button { padding: 8px 14px; font-size: 16px; margin-left: 10px; cursor: pointer;
 <script>
 let dados = [];
 
-fetch("dados-certificados.json")
-  .then(r => r.json())
-  .then(j => dados = j);
+// Carrega todos os arquivos JSON listados no manifest.json
+async function carregarArquivos() {
+    try {
+        const manifest = await fetch("manifest.json").then(r => r.json());
+
+        for (const arquivo of manifest.arquivos) {
+            const j = await fetch(arquivo).then(r => r.json());
+            dados = dados.concat(j.certificados);
+        }
+
+        console.log("Certificados carregados:", dados.length);
+
+    } catch (e) {
+        console.error("Erro ao carregar arquivos:", e);
+    }
+}
+
+carregarArquivos();
 
 function validarCodigo() {
     const codigo = document.getElementById("codigoInput").value.trim();
@@ -56,7 +71,6 @@ function validarCodigo() {
     }
 }
 </script>
-
   <hr style="margin-top: 40px;">
 
 <div style="margin-top: 25px; text-align: center;">
