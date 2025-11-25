@@ -7,7 +7,7 @@
 body { font-family: Arial, sans-serif; margin: 40px; text-align: center; }
 .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
 .header img { height: 100px; }
-.title { font-size: 28px; font-weight: bold; margin-bottom: 30px; }
+.title { font-size: 24px; font-weight: bold; text-align: center; flex: 1; margin: 0 20px; }
 input { padding: 8px; width: 300px; font-size: 16px; }
 button { padding: 8px 14px; font-size: 16px; margin-left: 10px; cursor: pointer; }
 #resultadoCodigo, #resultadoNome { margin-top: 25px; font-size: 18px; }
@@ -19,14 +19,13 @@ a:hover { text-decoration: underline; }
 
 <div class="header">
   <img src="menu-logo_menor.png" alt="UFSJ">
+  <div class="title">Certificados – GEMICRO / UFSJ</div>
   <img src="Logo_oficial.jpg" alt="GEMICRO">
 </div>
 
-<div class="title">Sistema de Validação de Certificados – GEMICRO / UFSJ</div>
-
 <!-- Busca por Nome -->
 <p>Buscar certificado pelo nome:</p>
-<input type="text" id="nomeInput" placeholder="Ex.: Amanda">
+<input type="text" id="nomeInput" placeholder="Ex.: Cristiane">
 <button onclick="buscarNome()">Buscar</button>
 <div id="resultadoNome"></div>
 
@@ -80,7 +79,7 @@ function validarCodigo() {
     }
 }
 
-// Busca por Nome
+// Busca por Nome (busca parcial)
 function buscarNome() {
     const nome = document.getElementById("nomeInput").value.trim().toLowerCase();
     const div = document.getElementById("resultadoNome");
@@ -90,7 +89,7 @@ function buscarNome() {
         return;
     }
 
-    const resultados = dados.filter(x => x.nome.toLowerCase() === nome);
+    const resultados = dados.filter(x => x.nome.toLowerCase().includes(nome));
 
     if (resultados.length > 0) {
         let html = "";
