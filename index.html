@@ -1,98 +1,158 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Validação de Certificados - GEMICRO / UFSJ</title>
-<style>
-body { font-family: Arial, sans-serif; margin: 40px; text-align: center; }
-.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-.header img { height: 100px; }
-.title { font-size: 28px; font-weight: bold; margin-bottom: 30px; }
-input { padding: 8px; width: 300px; font-size: 16px; }
-button { padding: 8px 14px; font-size: 16px; margin-left: 10px; cursor: pointer; }
-#resultado { margin-top: 25px; font-size: 18px; }
-</style>
+    <meta charset="UTF-8">
+    <title>Validação de Certificados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #resultadoBusca, #resultadoValidacao {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 16px;
+        }
+        #contato {
+            text-align: center;
+            margin-top: 40px;
+        }
+        #contato a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 20px;
+        }
+        #contato a:hover {
+            color: #0056b3;
+        }
+    </style>
 </head>
 <body>
+    <h1>Validação de Certificados</h1>
 
-<div class="header">
-  <img src="menu-logo_menor.png" alt="UFSJ">
-  <img src="Logo_oficial.jpg" alt="GEMICRO">
-</div>
+    <!-- Busca por Nome -->
+    <div class="container">
+        <h2>Buscar Certificado</h2>
+        <input type="text" id="nomeBusca" placeholder="Digite seu nome">
+        <button onclick="buscarCertificado()">Buscar</button>
+        <div id="resultadoBusca"></div>
+    </div>
 
-<div class="title">Sistema de Validação de Certificados – GEMICRO / UFSJ</div>
+    <!-- Busca por Código -->
+    <div class="container">
+        <h2>Validar Certificado</h2>
+        <input type="text" id="codigoBusca" placeholder="Digite o código do certificado">
+        <button onclick="validarCertificado()">Validar</button>
+        <div id="resultadoValidacao"></div>
+    </div>
 
-<p>Digite o código de validação do certificado:</p>
+    <!-- Contato -->
+    <div id="contato">
+        <a href="mailto:seuemail@exemplo.com" title="E-mail">✉️</a>
+        <a href="https://www.instagram.com/seuusuario" target="_blank" title="Instagram">📸</a>
+    </div>
 
-<input type="text" id="codigoInput" placeholder="Ex.: GEMICRO-UFSJ-000001">
-<button onclick="validarCodigo()">Validar</button>
+    <script>
+        let todosCertificados = [];
 
-<div id="resultado"></div>
+        // Carrega todos os JSONs listados no manifest
+        async function carregarCertificados() {
+            try {
+                const manifestResponse = await fetch('manifest.json');
+                const manifest = await manifestResponse.json();
 
-<script>
-let dados = [];
-
-// Carrega todos os arquivos JSON listados no manifest.json
-async function carregarArquivos() {
-    try {
-        const manifest = await fetch("manifest.json").then(r => r.json());
-
-        for (const arquivo of manifest.arquivos) {
-            const j = await fetch(arquivo).then(r => r.json());
-            dados = dados.concat(j.certificados);
+                for (const arquivoJSON of manifest.jsons) {
+                    const response = await fetch(arquivoJSON);
+                    const certificados = await response.json();
+                    todosCertificados = todosCertificados.concat(certificados);
+                }
+            } catch (error) {
+                console.error("Erro ao carregar os certificados:", error);
+            }
         }
 
-        console.log("Certificados carregados:", dados.length);
+        // Chamar ao carregar a página
+        carregarCertificados();
 
-    } catch (e) {
-        console.error("Erro ao carregar arquivos:", e);
-    }
-}
+        // Busca por Nome
+        function buscarCertificado() {
+            const nomeInput = document.getElementById('nomeBusca').value.trim().toLowerCase();
+            const div = document.getElementById('resultadoBusca');
 
-carregarArquivos();
+            if (!nomeInput) {
+                div.textContent = "Por favor, digite um nome.";
+                return;
+            }
 
-function validarCodigo() {
-    const codigo = document.getElementById("codigoInput").value.trim();
-    const div = document.getElementById("resultado");
+            const resultados = todosCertificados.filter(c => c.nome.toLowerCase() === nomeInput);
 
-    if (!codigo) {
-        div.innerHTML = "<span style='color:#b00;'>❗ Digite um código.</span>";
-        return;
-    }
+            if (resultados.length > 0) {
+                let html = "";
+                resultados.forEach(r => {
+                    html += `<a href="certificados/${r.codigo}.pdf" target="_blank">Download do certificado de ${r.nome} (${r.codigo})</a><br>`;
+                });
+                div.innerHTML = html;
+            } else {
+                div.textContent = "Certificado não encontrado.";
+            }
+        }
 
-    const item = dados.find(x => x.codigo.toUpperCase() === codigo.toUpperCase());
+        // Busca por Código
+        function validarCertificado() {
+            const codigoInput = document.getElementById('codigoBusca').value.trim();
+            const div = document.getElementById('resultadoValidacao');
 
-    if (item) {
-        div.innerHTML = "<span style='color:green;'>✔ Certificado válido.</span><br>Emitido para: <b>" 
-                        + item.nome + "</b>";
-    } else {
-        div.innerHTML = "<span style='color:#b00;'>✖ Código inválido.</span>";
-    }
-}
-</script>
-  <hr style="margin-top: 40px;">
+            if (!codigoInput) {
+                div.textContent = "Por favor, digite o código do certificado.";
+                return;
+            }
 
-<div style="margin-top: 25px; text-align: center;">
+            const resultado = todosCertificados.find(c => c.codigo === codigoInput);
 
-  <p style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">
-    Contato
-  </p>
-
-  <!-- Ícones -->
-  <a href="https://www.instagram.com/gemicro_ufsj/" target="_blank" 
-     style="margin-right: 20px; text-decoration: none;">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" 
-         alt="Instagram" width="40" height="40">
-  </a>
-
-  <a href="mailto:gemicro@ufsj.edu.br" 
-     style="text-decoration: none;">
-    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" 
-         alt="Email" width="40" height="40">
-  </a>
-
-</div>
-
+            if (resultado) {
+                div.innerHTML = `Certificado válido para: ${resultado.nome} <br> <a href="certificados/${resultado.codigo}.pdf" target="_blank">Download</a>`;
+            } else {
+                div.textContent = "Código de certificado não encontrado.";
+            }
+        }
+    </script>
 </body>
 </html>
