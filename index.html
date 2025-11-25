@@ -2,12 +2,26 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Certificados - GEMICRO / UFSJ</title>
+<title>Certificados – GEMICRO / UFSJ</title>
 <style>
 body { font-family: Arial, sans-serif; margin: 40px; text-align: center; }
-.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-.header img { height: 100px; }
-.title { font-size: 24px; font-weight: bold; text-align: center; flex: 1; margin: 0 20px; }
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  gap: 20px; /* espaçamento entre logos e título */
+}
+.header img { height: 100px; } /* Logo UFSJ mantém 100px */
+#logoGemicro { height: 150px; } /* Logo GEMICRO aumenta 50% */
+.title {
+  font-size: 26px;       /* um pouco maior para destaque */
+  font-weight: bold;
+  text-align: center;
+  flex: 1;
+  margin: 0;
+  line-height: 1.2;      /* melhor espaçamento vertical */
+}
 input { padding: 8px; width: 300px; font-size: 16px; }
 button { padding: 8px 14px; font-size: 16px; margin-left: 10px; cursor: pointer; }
 #resultadoCodigo, #resultadoNome { margin-top: 25px; font-size: 18px; }
@@ -20,7 +34,7 @@ a:hover { text-decoration: underline; }
 <div class="header">
   <img src="menu-logo_menor.png" alt="UFSJ">
   <div class="title">Certificados – GEMICRO / UFSJ</div>
-  <img src="Logo_oficial.jpg" alt="GEMICRO">
+  <img src="Logo_oficial.jpg" alt="GEMICRO" id="logoGemicro">
 </div>
 
 <!-- Busca por Nome -->
