@@ -108,12 +108,38 @@ body {
 .footer {
   display: flex;
   justify-content: center;
-  gap: 30px;
-  padding: 25px 0;
+  align-items: center;
+  gap: 22px;
+  padding: 24px 10px 28px;
+  flex-wrap: wrap;
 }
 
 .footer img {
-  height: 55px;
+  height: 52px;
+  transition: 0.2s;
+}
+
+.footer img:hover {
+  transform: scale(1.05);
+}
+
+.contato {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: 0.3px;
+}
+
+.contato a {
+  color: #3a2426;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.contato a:hover {
+  text-decoration: underline;
+  opacity: 0.8;
 }
 
 /* RESPONSIVO */
@@ -165,12 +191,17 @@ body {
   </div>
 
   <!-- RODAPÉ -->
-  <div class="footer">
-    <img src="menu-logo_menor.png" alt="UFSJ">
-    <img src="deceb_logo.png" alt="DECEB">
-  </div>
+  <div id="footer-container"></div>
 
 </div>
+
+<script>
+fetch("footer.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("footer-container").innerHTML = data;
+  });
+</script>
 
 </body>
 </html>
