@@ -34,107 +34,128 @@ body {
   flex-direction: column;
 }
 
-/* Layout principal */
+/* Mesma base da home */
 .container {
   flex: 1;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
+  padding: 60px 40px;
   gap: 60px;
-  padding: 50px 40px;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
-/* ESQUERDA */
 .left {
-  width: 35%;
-  max-width: 360px;
+  flex: 1;
+  max-width: 420px;
   text-align: center;
-  position: sticky;
-  top: 40px;
 }
 
 .left img {
   width: 100%;
-  max-width: 280px;
+  max-width: 320px;
+  height: auto;
 }
 
 .title {
-  margin-top: 20px;
-  font-size: 28px;
+  margin-top: 25px;
+  font-size: 30px;
   font-weight: 600;
 }
 
-/* CENTRO */
-.center {
+.right {
   flex: 1;
-  max-width: 650px;
+  display: flex;
+  justify-content: center;
 }
 
 .content-box {
-  background-color: rgba(255,255,255,0.4);
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.panel {
+  background-color: rgba(255, 255, 255, 0.38);
   border: 1px solid var(--borda-suave);
   border-radius: 16px;
-  padding: 30px;
+  padding: 28px 24px;
 }
 
 h1 {
+  margin: 0 0 24px 0;
+  font-size: 30px;
+  font-weight: 600;
   text-align: center;
-  margin-top: 0;
-  margin-bottom: 25px;
 }
 
-/* Seções */
 .section {
-  margin-bottom: 35px;
+  margin-bottom: 28px;
+}
+
+.section:last-of-type {
+  margin-bottom: 0;
 }
 
 .section-title {
   text-align: center;
-  font-size: 22px;
-  margin-bottom: 10px;
+  font-size: 21px;
+  font-weight: 600;
+  margin-bottom: 12px;
 }
 
-/* Inputs */
 .input-row {
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
 }
 
 input {
-  padding: 10px;
   width: 100%;
-  max-width: 300px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #cfc7b6;
   font-size: 16px;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  outline: none;
 }
 
-/* Botões */
+input:focus {
+  border-color: var(--cor-botao);
+}
+
 button {
-  padding: 10px 16px;
-  border-radius: 8px;
+  width: 100%;
+  padding: 16px;
+  font-size: 17px;
   border: none;
+  border-radius: 12px;
   background-color: var(--cor-botao);
-  color: white;
+  color: #fff;
+  font-family: var(--fonte-principal);
   cursor: pointer;
-  transition: 0.2s;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  transition: all 0.2s ease;
 }
 
 button:hover {
   background-color: var(--cor-botao-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
 }
 
 button:disabled {
   opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
 }
 
-/* Resultados */
 .resultado {
-  margin-top: 20px;
+  margin-top: 18px;
   text-align: center;
   font-size: 17px;
   line-height: 1.6;
@@ -149,45 +170,40 @@ button:disabled {
   text-decoration: underline;
 }
 
-/* Linha divisória */
 .divisor {
   border: none;
   border-top: 1px solid #d7d0bf;
-  margin: 30px 0;
+  margin: 26px 0;
 }
 
-/* Botão voltar */
-.voltar {
-  margin-top: 30px;
-  text-align: center;
-}
-
-/* Rodapé */
 .footer {
   display: flex;
   justify-content: center;
-  gap: 25px;
-  padding: 20px 0;
+  gap: 30px;
+  padding: 25px 0;
 }
 
 .footer img {
   height: 55px;
 }
 
-/* Responsivo */
 @media (max-width: 900px) {
   .container {
     flex-direction: column;
-    align-items: center;
+    padding: 40px 20px;
+    gap: 40px;
   }
 
-  .left {
-    position: static;
+  .left, .right {
+    max-width: 100%;
   }
 
-  .left, .center {
-    width: 100%;
-    max-width: 600px;
+  .content-box {
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 26px;
   }
 }
 </style>
@@ -199,57 +215,51 @@ button:disabled {
 
   <div class="container">
 
-    <!-- ESQUERDA -->
     <div class="left">
       <img src="logo_oficial_sem_fundo.png" alt="GEMICRO">
       <div class="title">GEMicro UFSJ</div>
     </div>
 
-    <!-- CENTRO -->
-    <div class="center">
+    <div class="right">
       <div class="content-box">
 
-        <h1>Certificados</h1>
+        <div class="panel">
+          <h1>Certificados</h1>
 
-        <!-- Busca por nome -->
-        <div class="section">
-          <div class="section-title">Buscar por nome</div>
+          <div class="section">
+            <div class="section-title">Buscar por nome</div>
 
-          <div class="input-row">
-            <input type="text" id="nomeInput" placeholder="Ex.: Cristiane">
-            <button id="btnNome" onclick="buscarNome()" disabled>Buscar</button>
+            <div class="input-row">
+              <input type="text" id="nomeInput" placeholder="Ex.: Cristiane">
+              <button id="btnNome" onclick="buscarNome()" disabled>Buscar</button>
+            </div>
+
+            <div id="resultadoNome" class="resultado"></div>
           </div>
 
-          <div id="resultadoNome" class="resultado"></div>
-        </div>
+          <hr class="divisor">
 
-        <hr class="divisor">
+          <div class="section">
+            <div class="section-title">Validar por código</div>
 
-        <!-- Validação por código -->
-        <div class="section">
-          <div class="section-title">Validar por código</div>
+            <div class="input-row">
+              <input type="text" id="codigoInput" placeholder="Ex.: GEMICRO-UFSJ-000001">
+              <button id="btnCodigo" onclick="validarCodigo()" disabled>Validar</button>
+            </div>
 
-          <div class="input-row">
-            <input type="text" id="codigoInput" placeholder="Ex.: GEMICRO-UFSJ-000001">
-            <button id="btnCodigo" onclick="validarCodigo()" disabled>Validar</button>
+            <div id="resultadoCodigo" class="resultado"></div>
           </div>
-
-          <div id="resultadoCodigo" class="resultado"></div>
         </div>
 
-        <!-- Voltar -->
-        <div class="voltar">
-          <a href="index.html">
-            <button>Voltar para a página inicial</button>
-          </a>
-        </div>
+        <a href="index.html">
+          <button>Voltar para a página inicial</button>
+        </a>
 
       </div>
     </div>
 
   </div>
 
-  <!-- Rodapé -->
   <div class="footer">
     <img src="menu-logo_menor.png" alt="UFSJ">
     <img src="deceb_logo.png" alt="DECEB">
@@ -257,7 +267,6 @@ button:disabled {
 
 </div>
 
-<!-- SCRIPT ORIGINAL (NÃO ALTERADO) -->
 <script>
 let dados = [];
 
