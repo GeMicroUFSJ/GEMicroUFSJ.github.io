@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nossa história GEMICRO / UFSJ</title>
+<title>Nossa história – GEMICRO / UFSJ</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
@@ -14,6 +14,11 @@
   --cor-botao-hover: #417a41;
   --fundo: #fffdee;
   --fonte-principal: 'Playfair Display', serif;
+  --borda-suave: #d8d2bf;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -23,58 +28,257 @@ body {
   color: var(--cor-texto);
 }
 
-/* Layout */
-.container {
+.page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
   justify-content: center;
+  gap: 50px;
+  padding: 50px 40px 30px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.left {
+  width: 32%;
+  max-width: 360px;
   text-align: center;
-  padding: 40px;
+  position: sticky;
+  top: 40px;
 }
 
-/* Título */
+.left img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.title {
+  margin-top: 22px;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.center {
+  flex: 1;
+  max-width: 640px;
+}
+
+.content-box {
+  background-color: rgba(255, 255, 255, 0.35);
+  border: 1px solid var(--borda-suave);
+  border-radius: 18px;
+  padding: 40px 30px;
+  text-align: center;
+}
+
 h1 {
-  font-size: 32px;
+  margin-top: 0;
   margin-bottom: 20px;
+  font-size: 34px;
+  font-weight: 600;
 }
 
-/* Texto */
-p {
-  font-size: 18px;
+.message {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 26px;
+}
+
+.submessage {
+  font-size: 17px;
+  line-height: 1.6;
   margin-bottom: 30px;
 }
 
-/* Botão voltar */
-button {
-  padding: 12px 20px;
-  font-size: 16px;
+.back-button a {
+  text-decoration: none;
+}
+
+.back-button button {
+  padding: 14px 22px;
+  font-size: 17px;
   border: none;
   border-radius: 10px;
   background-color: var(--cor-botao);
-  color: white;
+  color: #ffffff;
+  font-family: var(--fonte-principal);
   cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
-button:hover {
+.back-button button:hover {
   background-color: var(--cor-botao-hover);
+  transform: translateY(-2px);
+}
+
+.right {
+  width: 24%;
+  max-width: 280px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: sticky;
+  top: 40px;
+}
+
+.menu a {
+  text-decoration: none;
+}
+
+.menu button {
+  width: 100%;
+  padding: 15px 16px;
+  font-size: 17px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--cor-botao);
+  color: #ffffff;
+  font-family: var(--fonte-principal);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.menu button:hover {
+  background-color: var(--cor-botao-hover);
+  transform: translateY(-2px);
+}
+
+.menu .current button {
+  background-color: var(--cor-botao-hover);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  padding: 22px 20px 26px;
+}
+
+.footer img {
+  height: 55px;
+  width: auto;
+}
+
+@media (max-width: 1100px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    gap: 34px;
+  }
+
+  .left,
+  .center,
+  .right {
+    width: 100%;
+    max-width: 760px;
+  }
+
+  .menu {
+    position: static;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .left img {
+    max-width: 240px;
+  }
+
+  .title {
+    font-size: 27px;
+  }
+}
+
+@media (max-width: 680px) {
+  .container {
+    padding: 30px 18px 20px;
+  }
+
+  .content-box {
+    padding: 28px 20px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .message {
+    font-size: 18px;
+  }
+
+  .submessage {
+    font-size: 16px;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer img {
+    height: 48px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="page">
+  <div class="container">
 
-  <h1>Nossa História</h1>
+    <div class="left">
+      <img src="logo_oficial_sem_fundo.png" alt="GEMICRO">
+      <div class="title">GEMicro UFSJ</div>
+    </div>
 
-  <p>Esta página ainda está sendo desenvolvida.</p>
+    <div class="center">
+      <div class="content-box">
+        <h1>Nossa história</h1>
+        <div class="message">Página em construção.</div>
+        <div class="submessage">
+          Este conteúdo será disponibilizado em breve.
+        </div>
 
-  <a href="index.html">
-    <button>Voltar para a página inicial</button>
-  </a>
+        <div class="back-button">
+          <a href="index.html"><button>Voltar para a página inicial</button></a>
+        </div>
+      </div>
+    </div>
 
+    <div class="right">
+      <div class="menu">
+        <a href="index.html"><button>Página inicial</button></a>
+        <a href="historia.html" class="current"><button>Nossa história</button></a>
+        <a href="quem-somos.html"><button>Quem somos</button></a>
+        <a href="atividades.html"><button>Atividades</button></a>
+        <a href="busca.html"><button>Buscar e validar certificados</button></a>
+        <a href="links.html"><button>Links úteis</button></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <img src="menu-logo_menor.png" alt="UFSJ">
+    <img src="deceb_logo.png" alt="DECEB">
+  </div>
 </div>
 
 </body>
