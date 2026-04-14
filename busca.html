@@ -34,6 +34,7 @@ body {
   flex-direction: column;
 }
 
+/* Layout principal */
 .container {
   flex: 1;
   display: flex;
@@ -84,6 +85,7 @@ h1 {
   margin-bottom: 25px;
 }
 
+/* Seções */
 .section {
   margin-bottom: 35px;
 }
@@ -94,6 +96,7 @@ h1 {
   margin-bottom: 10px;
 }
 
+/* Inputs */
 .input-row {
   display: flex;
   justify-content: center;
@@ -110,6 +113,7 @@ input {
   font-size: 16px;
 }
 
+/* Botões */
 button {
   padding: 10px 16px;
   border-radius: 8px;
@@ -117,6 +121,7 @@ button {
   background-color: var(--cor-botao);
   color: white;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 button:hover {
@@ -127,6 +132,7 @@ button:disabled {
   opacity: 0.5;
 }
 
+/* Resultados */
 .resultado {
   margin-top: 20px;
   text-align: center;
@@ -143,19 +149,20 @@ button:disabled {
   text-decoration: underline;
 }
 
+/* Linha divisória */
 .divisor {
   border: none;
   border-top: 1px solid #d7d0bf;
   margin: 30px 0;
 }
 
-/* BOTÃO VOLTAR */
+/* Botão voltar */
 .voltar {
   margin-top: 30px;
   text-align: center;
 }
 
-/* RODAPÉ */
+/* Rodapé */
 .footer {
   display: flex;
   justify-content: center;
@@ -167,7 +174,7 @@ button:disabled {
   height: 55px;
 }
 
-/* RESPONSIVO */
+/* Responsivo */
 @media (max-width: 900px) {
   .container {
     flex-direction: column;
@@ -189,11 +196,12 @@ button:disabled {
 <body>
 
 <div class="page">
+
   <div class="container">
 
     <!-- ESQUERDA -->
     <div class="left">
-      <img src="logo_oficial_sem_fundo.png">
+      <img src="logo_oficial_sem_fundo.png" alt="GEMICRO">
       <div class="title">GEMicro UFSJ</div>
     </div>
 
@@ -203,12 +211,12 @@ button:disabled {
 
         <h1>Certificados</h1>
 
-        <!-- BUSCA -->
+        <!-- Busca por nome -->
         <div class="section">
           <div class="section-title">Buscar por nome</div>
 
           <div class="input-row">
-            <input type="text" id="nomeInput">
+            <input type="text" id="nomeInput" placeholder="Ex.: Cristiane">
             <button id="btnNome" onclick="buscarNome()" disabled>Buscar</button>
           </div>
 
@@ -217,19 +225,19 @@ button:disabled {
 
         <hr class="divisor">
 
-        <!-- VALIDAÇÃO -->
+        <!-- Validação por código -->
         <div class="section">
           <div class="section-title">Validar por código</div>
 
           <div class="input-row">
-            <input type="text" id="codigoInput">
+            <input type="text" id="codigoInput" placeholder="Ex.: GEMICRO-UFSJ-000001">
             <button id="btnCodigo" onclick="validarCodigo()" disabled>Validar</button>
           </div>
 
           <div id="resultadoCodigo" class="resultado"></div>
         </div>
 
-        <!-- VOLTAR -->
+        <!-- Voltar -->
         <div class="voltar">
           <a href="index.html">
             <button>Voltar para a página inicial</button>
@@ -241,14 +249,15 @@ button:disabled {
 
   </div>
 
-  <!-- RODAPÉ -->
+  <!-- Rodapé -->
   <div class="footer">
-    <img src="menu-logo_menor.png">
-    <img src="deceb_logo.png">
+    <img src="menu-logo_menor.png" alt="UFSJ">
+    <img src="deceb_logo.png" alt="DECEB">
   </div>
+
 </div>
 
-<!-- SCRIPT ORIGINAL (INALTERADO) -->
+<!-- SCRIPT ORIGINAL (NÃO ALTERADO) -->
 <script>
 let dados = [];
 
