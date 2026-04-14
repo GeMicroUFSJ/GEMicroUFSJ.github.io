@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Certificados – GEMICRO / UFSJ</title>
+
+<style>
+body { font-family: Arial, sans-serif; margin: 40px; text-align: center; }
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  gap: 20px;
+}
+
+.header img { height: 100px; }
+
+#logoGemicro { height: 150px; }
+
+.title {
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+  flex: 1;
+  margin: 0;
+  line-height: 1.2;
+}
+
+input {
+  padding: 8px;
+  width: 300px;
+  font-size: 16px;
+}
+
+button {
+  padding: 8px 14px;
+  font-size: 16px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#resultadoCodigo, #resultadoNome {
+  margin-top: 25px;
+  font-size: 18px;
+}
+
+a { color: #007bff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <img src="menu-logo_menor.png" alt="UFSJ">
+  <div class="title">Certificados – GEMICRO / UFSJ</div>
+  <img src="Logo_oficial.jpg" alt="GEMICRO" id="logoGemicro">
+</div>
+
+<!-- Busca por Nome -->
+<p>Buscar certificado pelo nome:</p>
+<input type="text" id="nomeInput" placeholder="Ex.: Cristiane">
+<button id="btnNome" onclick="buscarNome()" disabled>Buscar</button>
+<div id="resultadoNome"></div>
+
+<hr style="margin:40px 0;">
+
+<!-- Busca por Código -->
+<p>Digite o código de validação do certificado:</p>
+<input type="text" id="codigoInput" placeholder="Ex.: GEMICRO-UFSJ-000001">
+<button id="btnCodigo" onclick="validarCodigo()" disabled>Validar</button>
+<div id="resultadoCodigo"></div>
+
+<script>
+let dados = [];
+
+const URL = "https://opensheet.elk.sh/1MNP35RsZyiFmfuxJtObvU_JEFJWIShf65aMquWNm-pw/pagina1";
+
+// Carrega dados do Google Sheets
+async function carregarDados() {
+    try {
+        const resposta = await fetch(URL);
+        dados = await resposta.json();
+
+        console.log("Certificados carregados:", dados.length);
+
+        // Ativa botões após carregar
+        document.getElementById("btnNome").disabled = false;
+        document.getElementById("btnCodigo").disabled = false;
+
+    } catch (e) {
+        console.error("Erro ao carregar dados:", e);
+    }
+}
+
+carregarDados();
+
+// Validação por código
+function validarCodigo() {
+    const codigo = document.getElementById("codigoInput").value.trim();
+    const div = document.getElementById("resultadoCodigo");
+
+    if (!codigo) {
+        div.innerHTML = "<span style='color:#b00;'>❗ Digite um código.</span>";
+        return;
+    }
+
+    const item = dados.find(x => x.codigo.toUpperCase() === codigo.toUpperCase());
+
+    if (item) {
+        div.innerHTML = "<span style='color:green;'>✔ Certificado válido.</span><br>"
+            + "Emitido para: <b>" + item.nome + "</b><br>"
+            + "Evento: " + item.evento + "<br>"
+            + "Semestre: " + item.semestre + "<br>"
+            + "Tipo: " + item.tipo + "<br>"
+            + "<a href='certificados/" + item.codigo + ".pdf' target='_blank'>Download do PDF</a>";
+    } else {
+        div.innerHTML = "<span style='color:#b00;'>✖ Código inválido.</span>";
+    }
+}
+
+// Busca por nome
+function buscarNome() {
+    const nome = document.getElementById("nomeInput").value.trim().toLowerCase();
+    const div = document.getElementById("resultadoNome");
+
+    if (!nome) {
+        div.innerHTML = "<span style='color:#b00;'>❗ Digite um nome.</span>";
+        return;
+    }
+
+    const resultados = dados.filter(x => x.nome.toLowerCase().includes(nome));
+
+    if (resultados.length > 0) {
+        let html = "";
+        resultados.forEach(item => {
+            html += "✔ <b>" + item.nome + "</b> (" + item.codigo + ")<br>"
+                  + "Evento: " + item.evento + " | "
+                  + "Semestre: " + item.semestre + " | "
+                  + "Tipo: " + item.tipo + "<br>"
+                  + "<a href='certificados/" + item.codigo + ".pdf' target='_blank'>Download</a><br><br>";
+        });
+        div.innerHTML = html;
+    } else {
+        div.innerHTML = "<span style='color:#b00;'>✖ Nenhum certificado encontrado.</span>";
+    }
+}
+
+// Enter para busca
+document.getElementById("nomeInput").addEventListener("keyup", function(event) {
+    if (event.key === "Enter") buscarNome();
+});
+
+document.getElementById("codigoInput").addEventListener("keyup", function(event) {
+    if (event.key === "Enter") validarCodigo();
+});
+</script>
+
+<hr style="margin-top: 40px;">
+
+<div style="margin-top: 25px; text-align: center;">
+  <p style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">
+    Contato
+  </p>
+
+  <a href="https://www.instagram.com/gemicro_ufsj/" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="40">
+  </a>
+
+  <a href="mailto:gemicro@ufsj.edu.br">
+    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" width="40">
+  </a>
+</div>
+
+</body>
+</html>
