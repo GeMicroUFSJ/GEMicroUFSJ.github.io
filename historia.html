@@ -34,205 +34,121 @@ body {
   flex-direction: column;
 }
 
+/* Mesma base da home */
 .container {
   flex: 1;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  gap: 50px;
-  padding: 50px 40px 30px;
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
+  padding: 60px 40px;
+  gap: 60px;
 }
 
 .left {
-  width: 32%;
-  max-width: 360px;
+  flex: 1;
+  max-width: 420px;
   text-align: center;
-  position: sticky;
-  top: 40px;
 }
 
 .left img {
   width: 100%;
-  max-width: 300px;
+  max-width: 320px;
   height: auto;
-  display: block;
-  margin: 0 auto;
 }
 
 .title {
-  margin-top: 22px;
+  margin-top: 25px;
   font-size: 30px;
   font-weight: 600;
-  line-height: 1.2;
-}
-
-.center {
-  flex: 1;
-  max-width: 640px;
-}
-
-.content-box {
-  background-color: rgba(255, 255, 255, 0.35);
-  border: 1px solid var(--borda-suave);
-  border-radius: 18px;
-  padding: 40px 30px;
-  text-align: center;
-}
-
-h1 {
-  margin-top: 0;
-  margin-bottom: 20px;
-  font-size: 34px;
-  font-weight: 600;
-}
-
-.message {
-  font-size: 20px;
-  line-height: 1.6;
-  margin-bottom: 26px;
-}
-
-.submessage {
-  font-size: 17px;
-  line-height: 1.6;
-  margin-bottom: 30px;
-}
-
-.back-button a {
-  text-decoration: none;
-}
-
-.back-button button {
-  padding: 14px 22px;
-  font-size: 17px;
-  border: none;
-  border-radius: 10px;
-  background-color: var(--cor-botao);
-  color: #ffffff;
-  font-family: var(--fonte-principal);
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-}
-
-.back-button button:hover {
-  background-color: var(--cor-botao-hover);
-  transform: translateY(-2px);
 }
 
 .right {
-  width: 24%;
-  max-width: 280px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
-.menu {
+.content-box {
+  width: 100%;
+  max-width: 420px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  position: sticky;
-  top: 40px;
+  gap: 18px;
 }
 
-.menu a {
-  text-decoration: none;
+.panel {
+  background-color: rgba(255, 255, 255, 0.38);
+  border: 1px solid var(--borda-suave);
+  border-radius: 16px;
+  padding: 28px 24px;
 }
 
-.menu button {
+h1 {
+  margin: 0 0 20px 0;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.texto {
+  font-size: 17px;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+.texto p {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+button {
   width: 100%;
-  padding: 15px 16px;
+  padding: 16px;
   font-size: 17px;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   background-color: var(--cor-botao);
-  color: #ffffff;
+  color: #fff;
   font-family: var(--fonte-principal);
   cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
   transition: all 0.2s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
-.menu button:hover {
+button:hover {
   background-color: var(--cor-botao-hover);
-  transform: translateY(-2px);
-}
-
-.menu .current button {
-  background-color: var(--cor-botao-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
 }
 
 .footer {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 28px;
-  padding: 22px 20px 26px;
+  gap: 30px;
+  padding: 25px 0;
 }
 
 .footer img {
   height: 55px;
-  width: auto;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 900px) {
   .container {
     flex-direction: column;
-    align-items: center;
-    gap: 34px;
+    padding: 40px 20px;
+    gap: 40px;
   }
 
-  .left,
-  .center,
-  .right {
-    width: 100%;
-    max-width: 760px;
-  }
-
-  .menu {
-    position: static;
-    max-width: 420px;
-    margin: 0 auto;
-  }
-
-  .left img {
-    max-width: 240px;
-  }
-
-  .title {
-    font-size: 27px;
-  }
-}
-
-@media (max-width: 680px) {
-  .container {
-    padding: 30px 18px 20px;
+  .left, .right {
+    max-width: 100%;
   }
 
   .content-box {
-    padding: 28px 20px;
+    max-width: 100%;
   }
 
-  h1 {
-    font-size: 28px;
-  }
-
-  .message {
-    font-size: 18px;
-  }
-
-  .submessage {
-    font-size: 16px;
-  }
-
-  .footer {
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  .footer img {
-    height: 48px;
+  .title {
+    font-size: 26px;
   }
 }
 </style>
@@ -241,6 +157,7 @@ h1 {
 <body>
 
 <div class="page">
+
   <div class="container">
 
     <div class="left">
@@ -248,28 +165,22 @@ h1 {
       <div class="title">GEMicro UFSJ</div>
     </div>
 
-    <div class="center">
-      <div class="content-box">
-        <h1>Nossa história</h1>
-        <div class="message">Página em construção.</div>
-        <div class="submessage">
-          Este conteúdo será disponibilizado em breve.
-        </div>
-
-        <div class="back-button">
-          <a href="index.html"><button>Voltar para a página inicial</button></a>
-        </div>
-      </div>
-    </div>
-
     <div class="right">
-      <div class="menu">
-        <a href="index.html"><button>Página inicial</button></a>
-        <a href="historia.html" class="current"><button>Nossa história</button></a>
-        <a href="quem-somos.html"><button>Quem somos</button></a>
-        <a href="atividades.html"><button>Atividades</button></a>
-        <a href="busca.html"><button>Buscar e validar certificados</button></a>
-        <a href="links.html"><button>Links úteis</button></a>
+      <div class="content-box">
+
+        <div class="panel">
+          <h1>Nossa história</h1>
+
+          <div class="texto">
+            <p>Esta página está em construção.</p>
+            <p>Em breve, aqui serão apresentadas informações sobre a trajetória do Grupo de Estudos em Microbiologia Agrícola e Ambiental, sua criação, seus objetivos e sua atuação ao longo do tempo.</p>
+          </div>
+        </div>
+
+        <a href="index.html">
+          <button>Voltar para a página inicial</button>
+        </a>
+
       </div>
     </div>
 
@@ -279,6 +190,7 @@ h1 {
     <img src="menu-logo_menor.png" alt="UFSJ">
     <img src="deceb_logo.png" alt="DECEB">
   </div>
+
 </div>
 
 </body>
