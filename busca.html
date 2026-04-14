@@ -2,43 +2,93 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Certificados – GEMICRO / UFSJ</title>
 
-<style>
-body { font-family: Arial, sans-serif; margin: 40px; text-align: center; }
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
+<style>
+:root {
+  --cor-texto: #3a2426;
+  --cor-botao: #529552;
+  --cor-botao-hover: #417a41;
+  --fundo: #fffdee;
+  --fonte-principal: 'Playfair Display', serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fonte-principal);
+  background-color: var(--fundo);
+  color: var(--cor-texto);
+}
+
+/* Layout geral */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cabeçalho */
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 40px;
-  gap: 20px;
+  padding: 20px 40px;
 }
 
-.header img { height: 100px; }
+.header img {
+  height: 70px;
+}
 
-#logoGemicro { height: 150px; }
+.header-title {
+  font-size: 22px;
+  font-weight: 600;
+}
 
-.title {
-  font-size: 26px;
-  font-weight: bold;
-  text-align: center;
+/* Conteúdo */
+.container {
   flex: 1;
-  margin: 0;
-  line-height: 1.2;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 40px;
 }
 
+/* Seções */
+.section {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Inputs */
 input {
-  padding: 8px;
-  width: 300px;
+  padding: 10px;
+  width: 60%;
+  max-width: 320px;
   font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
 
+/* Botões */
 button {
-  padding: 8px 14px;
+  padding: 10px 16px;
   font-size: 16px;
   margin-left: 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--cor-botao);
+  color: white;
   cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--cor-botao-hover);
 }
 
 button:disabled {
@@ -46,52 +96,117 @@ button:disabled {
   cursor: not-allowed;
 }
 
-#resultadoCodigo, #resultadoNome {
-  margin-top: 25px;
+/* Resultados */
+.resultado {
+  margin-top: 20px;
   font-size: 18px;
 }
 
-a { color: #007bff; text-decoration: none; }
-a:hover { text-decoration: underline; }
+/* Links */
+a {
+  color: var(--cor-botao);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Voltar */
+.voltar {
+  margin-top: 30px;
+}
+
+/* Rodapé */
+.footer {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 20px 0;
+}
+
+.footer img {
+  height: 50px;
+}
+
+/* Responsivo */
+@media (max-width: 800px) {
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  button {
+    margin-left: 0;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<div class="header">
-  <img src="menu-logo_menor.png" alt="UFSJ">
-  <div class="title">Certificados – GEMICRO / UFSJ</div>
-  <img src="Logo_oficial.jpg" alt="GEMICRO" id="logoGemicro">
+<div class="page">
+
+  <!-- Cabeçalho -->
+  <div class="header">
+    <img src="logo_oficial_sem_fundo.png" alt="GEMICRO">
+    <div class="header-title">GEMicro UFSJ</div>
+    <img src="menu-logo_menor.png" alt="UFSJ">
+  </div>
+
+  <!-- Conteúdo -->
+  <div class="container">
+
+    <!-- Busca por Nome -->
+    <div class="section">
+      <div class="section-title">Buscar certificado pelo nome</div>
+      <input type="text" id="nomeInput" placeholder="Ex.: Cristiane">
+      <button id="btnNome" onclick="buscarNome()" disabled>Buscar</button>
+      <div id="resultadoNome" class="resultado"></div>
+    </div>
+
+    <hr>
+
+    <!-- Validação -->
+    <div class="section">
+      <div class="section-title">Validar certificado por código</div>
+      <input type="text" id="codigoInput" placeholder="Ex.: GEMICRO-UFSJ-000001">
+      <button id="btnCodigo" onclick="validarCodigo()" disabled>Validar</button>
+      <div id="resultadoCodigo" class="resultado"></div>
+    </div>
+
+    <div class="voltar">
+      <a href="index.html">
+        <button>Voltar para a página inicial</button>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Rodapé -->
+  <div class="footer">
+    <img src="menu-logo_menor.png">
+    <img src="deceb_logo.png">
+  </div>
+
 </div>
 
-<!-- Busca por Nome -->
-<p>Buscar certificado pelo nome:</p>
-<input type="text" id="nomeInput" placeholder="Ex.: Cristiane">
-<button id="btnNome" onclick="buscarNome()" disabled>Buscar</button>
-<div id="resultadoNome"></div>
-
-<hr style="margin:40px 0;">
-
-<!-- Busca por Código -->
-<p>Digite o código de validação do certificado:</p>
-<input type="text" id="codigoInput" placeholder="Ex.: GEMICRO-UFSJ-000001">
-<button id="btnCodigo" onclick="validarCodigo()" disabled>Validar</button>
-<div id="resultadoCodigo"></div>
-
+<!-- SCRIPT ORIGINAL (INTACTO) -->
 <script>
 let dados = [];
 
 const URL = "https://opensheet.elk.sh/1MNP35RsZyiFmfuxJtObvU_JEFJWIShf65aMquWNm-pw/pagina1";
 
-// Carrega dados do Google Sheets
 async function carregarDados() {
     try {
         const resposta = await fetch(URL);
         dados = await resposta.json();
 
-        console.log("Certificados carregados:", dados.length);
-
-        // Ativa botões após carregar
         document.getElementById("btnNome").disabled = false;
         document.getElementById("btnCodigo").disabled = false;
 
@@ -102,7 +217,6 @@ async function carregarDados() {
 
 carregarDados();
 
-// Validação por código
 function validarCodigo() {
     const codigo = document.getElementById("codigoInput").value.trim();
     const div = document.getElementById("resultadoCodigo");
@@ -126,7 +240,6 @@ function validarCodigo() {
     }
 }
 
-// Busca por nome
 function buscarNome() {
     const nome = document.getElementById("nomeInput").value.trim().toLowerCase();
     const div = document.getElementById("resultadoNome");
@@ -153,7 +266,6 @@ function buscarNome() {
     }
 }
 
-// Enter para busca
 document.getElementById("nomeInput").addEventListener("keyup", function(event) {
     if (event.key === "Enter") buscarNome();
 });
@@ -162,22 +274,6 @@ document.getElementById("codigoInput").addEventListener("keyup", function(event)
     if (event.key === "Enter") validarCodigo();
 });
 </script>
-
-<hr style="margin-top: 40px;">
-
-<div style="margin-top: 25px; text-align: center;">
-  <p style="font-size: 16px; font-weight: bold; margin-bottom: 10px;">
-    Contato
-  </p>
-
-  <a href="https://www.instagram.com/gemicro_ufsj/" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" width="40">
-  </a>
-
-  <a href="mailto:gemicro@ufsj.edu.br">
-    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" width="40">
-  </a>
-</div>
 
 </body>
 </html>
