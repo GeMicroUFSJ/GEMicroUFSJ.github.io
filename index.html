@@ -1,141 +1,221 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>GEMICRO / UFSJ</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GEMICRO / UFSJ</title>
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom right, #ffffff, #f5f5f5);
-}
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-/* Layout principal */
-.container {
-  display: flex;
-  height: 100vh;
-}
+  <style>
+    :root {
+      --cor-texto: #3a2426;
+      --cor-texto-claro: #5a3a3d;
+      --cor-botao: #3a2426;
+      --cor-botao-hover: #5a3a3d;
+      --cor-botao-texto: #ffffff;
+      --sombra-suave: 0 6px 18px rgba(58, 36, 38, 0.12);
+      --fonte-principal: 'Playfair Display', serif;
+    }
 
-/* Lado esquerdo */
-.left {
-  width: 40%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-/* Lado direito */
-.right {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--fonte-principal);
+      color: var(--cor-texto);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 38%),
+        radial-gradient(circle at bottom right, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 34%),
+        linear-gradient(135deg, #efe1db 0%, #e7d4cd 34%, #dcc4bc 68%, #d2b7ae 100%);
+    }
 
-/* Logo */
-.left img {
-  max-width: 250px;
-}
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 36px 40px 100px;
+      position: relative;
+    }
 
-/* Título */
-.title {
-  font-size: 28px;
-  font-weight: bold;
-  margin-top: 20px;
-}
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
 
-/* Menu */
-.menu {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 60%;
-}
+    .left {
+      width: 42%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
-.menu a {
-  text-decoration: none;
-}
+    .left img {
+      width: 100%;
+      max-width: 360px;
+      height: auto;
+      display: block;
+    }
 
-/* Botões */
-.menu button {
-  width: 100%;
-  padding: 14px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  background-color: #e0e0e0;
-  border-radius: 8px;
-  transition: 0.2s;
-}
+    .title {
+      margin-top: 18px;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--cor-texto);
+      line-height: 1.2;
+      letter-spacing: 0.3px;
+    }
 
-.menu button:hover {
-  background-color: #d0d0d0;
-}
+    .right {
+      width: 58%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-/* Rodapé */
-.footer {
-  position: absolute;
-  bottom: 20px;
-  width: 100%;
-  text-align: center;
-}
+    .menu {
+      width: 100%;
+      max-width: 560px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
 
-.footer img {
-  height: 60px;
-  margin: 0 10px;
-}
+    .menu a {
+      text-decoration: none;
+      display: block;
+    }
 
-/* Responsivo */
-@media (max-width: 800px) {
-  .container {
-    flex-direction: column;
-  }
+    .menu button {
+      width: 100%;
+      padding: 16px 22px;
+      border: none;
+      border-radius: 12px;
+      background-color: var(--cor-botao);
+      color: var(--cor-botao-texto);
+      font-family: var(--fonte-principal);
+      font-size: 1.08rem;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: var(--sombra-suave);
+      transition: transform 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+    }
 
-  .left, .right {
-    width: 100%;
-    height: auto;
-  }
+    .menu button:hover {
+      background-color: var(--cor-botao-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(58, 36, 38, 0.16);
+    }
 
-  .menu {
-    width: 80%;
-  }
-}
-</style>
+    .footer {
+      position: absolute;
+      bottom: 22px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 22px;
+      padding: 0 20px;
+    }
+
+    .footer img {
+      height: 62px;
+      width: auto;
+      display: block;
+    }
+
+    @media (max-width: 980px) {
+      .page {
+        justify-content: flex-start;
+        padding-top: 42px;
+      }
+
+      .container {
+        flex-direction: column;
+        gap: 34px;
+      }
+
+      .left,
+      .right {
+        width: 100%;
+      }
+
+      .left img {
+        max-width: 280px;
+      }
+
+      .title {
+        font-size: 1.9rem;
+      }
+
+      .menu {
+        max-width: 640px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 28px 20px 110px;
+      }
+
+      .title {
+        font-size: 1.65rem;
+      }
+
+      .menu button {
+        font-size: 1rem;
+        padding: 15px 18px;
+      }
+
+      .footer {
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .footer img {
+        height: 52px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="page">
+    <div class="container">
 
-<div class="container">
+      <div class="left">
+        <img src="Logo_oficial.jpg" alt="GEMICRO">
+        <div class="title">GEMicro UFSJ</div>
+      </div>
 
-  <!-- ESQUERDA -->
-  <div class="left">
-    <img src="Logo_oficial.jpg" alt="GEMICRO">
-    <div class="title">GEMicro UFSJ</div>
-  </div>
+      <div class="right">
+        <div class="menu">
+          <a href="historia.html"><button>Nossa história</button></a>
+          <a href="quem-somos.html"><button>Quem somos</button></a>
+          <a href="atividades.html"><button>Atividades</button></a>
+          <a href="busca.html"><button>Buscar e validar certificados</button></a>
+          <a href="links.html"><button>Links úteis</button></a>
+        </div>
+      </div>
 
-  <!-- DIREITA -->
-  <div class="right">
-
-    <div class="menu">
-      <a href="historia.html"><button>Nossa história</button></a>
-      <a href="quem-somos.html"><button>Quem somos</button></a>
-      <a href="atividades.html"><button>Atividades</button></a>
-      <a href="busca.html"><button>Buscar e validar certificados</button></a>
-      <a href="links.html"><button>Links úteis</button></a>
     </div>
 
+    <div class="footer">
+      <img src="menu-logo_menor.png" alt="UFSJ">
+      <img src="deceb_logo.png" alt="DECEB">
+    </div>
   </div>
-
-</div>
-
-<!-- Rodapé -->
-<div class="footer">
-  <img src="menu-logo_menor.png" alt="UFSJ">
-  <img src="deceb_logo.png" alt="DECEB">
-</div>
-
 </body>
 </html>
