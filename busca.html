@@ -14,6 +14,11 @@
   --cor-botao-hover: #417a41;
   --fundo: #fffdee;
   --fonte-principal: 'Playfair Display', serif;
+  --borda-suave: #d8d2bf;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -23,126 +28,266 @@ body {
   color: var(--cor-texto);
 }
 
-/* Layout geral */
 .page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Cabeçalho */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 40px;
-}
-
-.header img {
-  height: 70px;
-}
-
-.header-title {
-  font-size: 22px;
-  font-weight: 600;
-}
-
-/* Conteúdo */
 .container {
   flex: 1;
-  max-width: 900px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 50px;
+  padding: 50px 40px 30px;
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 30px 40px;
 }
 
-/* Seções */
+.left {
+  width: 32%;
+  max-width: 360px;
+  text-align: center;
+  position: sticky;
+  top: 40px;
+}
+
+.left img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.title {
+  margin-top: 22px;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.center {
+  flex: 1;
+  max-width: 640px;
+}
+
+.content-box {
+  background-color: rgba(255, 255, 255, 0.35);
+  border: 1px solid var(--borda-suave);
+  border-radius: 18px;
+  padding: 32px 28px;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 28px;
+  font-size: 34px;
+  font-weight: 600;
+  text-align: center;
+}
+
 .section {
-  margin-bottom: 40px;
+  margin-bottom: 34px;
+}
+
+.section:last-child {
+  margin-bottom: 0;
 }
 
 .section-title {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  text-align: center;
 }
 
-/* Inputs */
+.section-description {
+  font-size: 17px;
+  text-align: center;
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 input {
-  padding: 10px;
-  width: 60%;
-  max-width: 320px;
+  padding: 13px 14px;
+  width: 100%;
+  max-width: 360px;
   font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  font-family: Arial, sans-serif;
+  border: 1px solid #cfc7b6;
+  border-radius: 10px;
+  outline: none;
+  background-color: #ffffff;
 }
 
-/* Botões */
+input:focus {
+  border-color: var(--cor-botao);
+}
+
 button {
-  padding: 10px 16px;
+  padding: 13px 18px;
   font-size: 16px;
-  margin-left: 10px;
-  border-radius: 8px;
   border: none;
+  border-radius: 10px;
   background-color: var(--cor-botao);
-  color: white;
+  color: #ffffff;
+  font-family: var(--fonte-principal);
   cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 button:hover {
   background-color: var(--cor-botao-hover);
+  transform: translateY(-2px);
 }
 
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  transform: none;
 }
 
-/* Resultados */
 .resultado {
-  margin-top: 20px;
+  margin-top: 22px;
   font-size: 18px;
+  line-height: 1.7;
+  text-align: center;
 }
 
-/* Links */
-a {
+.resultado a {
   color: var(--cor-botao);
   text-decoration: none;
+  font-weight: 600;
 }
 
-a:hover {
+.resultado a:hover {
   text-decoration: underline;
 }
 
-/* Voltar */
-.voltar {
-  margin-top: 30px;
+.divisor {
+  border: none;
+  border-top: 1px solid #d7d0bf;
+  margin: 28px 0;
 }
 
-/* Rodapé */
+.right {
+  width: 24%;
+  max-width: 280px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: sticky;
+  top: 40px;
+}
+
+.menu a {
+  text-decoration: none;
+}
+
+.menu button {
+  width: 100%;
+  padding: 15px 16px;
+  font-size: 17px;
+}
+
+.menu .current button {
+  background-color: var(--cor-botao-hover);
+}
+
 .footer {
   display: flex;
   justify-content: center;
-  gap: 25px;
-  padding: 20px 0;
+  align-items: center;
+  gap: 28px;
+  padding: 22px 20px 26px;
 }
 
 .footer img {
-  height: 50px;
+  height: 55px;
+  width: auto;
 }
 
-/* Responsivo */
-@media (max-width: 800px) {
-  .header {
+@media (max-width: 1100px) {
+  .container {
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
+    gap: 34px;
   }
 
-  input {
+  .left,
+  .center,
+  .right {
     width: 100%;
-    margin-bottom: 10px;
+    max-width: 760px;
   }
 
-  button {
-    margin-left: 0;
+  .left,
+  .right {
+    position: static;
+  }
+
+  .menu {
+    position: static;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .left img {
+    max-width: 240px;
+  }
+
+  .title {
+    font-size: 27px;
+  }
+}
+
+@media (max-width: 680px) {
+  .container {
+    padding: 30px 18px 20px;
+  }
+
+  .content-box {
+    padding: 24px 18px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .section-title {
+    font-size: 22px;
+  }
+
+  .section-description {
+    font-size: 16px;
+  }
+
+  .resultado {
+    font-size: 17px;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer img {
+    height: 48px;
   }
 }
 </style>
@@ -151,62 +296,82 @@ a:hover {
 <body>
 
 <div class="page">
-
-  <!-- Cabeçalho -->
-  <div class="header">
-    <img src="logo_oficial_sem_fundo.png" alt="GEMICRO">
-    <div class="header-title">GEMicro UFSJ</div>
-    <img src="menu-logo_menor.png" alt="UFSJ">
-  </div>
-
-  <!-- Conteúdo -->
   <div class="container">
 
-    <!-- Busca por Nome -->
-    <div class="section">
-      <div class="section-title">Buscar certificado pelo nome</div>
-      <input type="text" id="nomeInput" placeholder="Ex.: Cristiane">
-      <button id="btnNome" onclick="buscarNome()" disabled>Buscar</button>
-      <div id="resultadoNome" class="resultado"></div>
+    <div class="left">
+      <img src="logo_oficial_sem_fundo.png" alt="GEMICRO">
+      <div class="title">GEMicro UFSJ</div>
     </div>
 
-    <hr>
+    <div class="center">
+      <div class="content-box">
+        <h1>Certificados</h1>
 
-    <!-- Validação -->
-    <div class="section">
-      <div class="section-title">Validar certificado por código</div>
-      <input type="text" id="codigoInput" placeholder="Ex.: GEMICRO-UFSJ-000001">
-      <button id="btnCodigo" onclick="validarCodigo()" disabled>Validar</button>
-      <div id="resultadoCodigo" class="resultado"></div>
+        <div class="section">
+          <div class="section-title">Buscar certificado pelo nome</div>
+          <div class="section-description">
+            Digite parte do nome para localizar os certificados disponíveis.
+          </div>
+
+          <div class="input-row">
+            <input type="text" id="nomeInput" placeholder="Ex.: Cristiane">
+            <button id="btnNome" onclick="buscarNome()" disabled>Buscar</button>
+          </div>
+
+          <div id="resultadoNome" class="resultado"></div>
+        </div>
+
+        <hr class="divisor">
+
+        <div class="section">
+          <div class="section-title">Validar certificado por código</div>
+          <div class="section-description">
+            Digite o código de validação para verificar a autenticidade do certificado.
+          </div>
+
+          <div class="input-row">
+            <input type="text" id="codigoInput" placeholder="Ex.: GEMICRO-UFSJ-000001">
+            <button id="btnCodigo" onclick="validarCodigo()" disabled>Validar</button>
+          </div>
+
+          <div id="resultadoCodigo" class="resultado"></div>
+        </div>
+      </div>
     </div>
 
-    <div class="voltar">
-      <a href="index.html">
-        <button>Voltar para a página inicial</button>
-      </a>
+    <div class="right">
+      <div class="menu">
+        <a href="index.html"><button>Página inicial</button></a>
+        <a href="historia.html"><button>Nossa história</button></a>
+        <a href="quem-somos.html"><button>Quem somos</button></a>
+        <a href="atividades.html"><button>Atividades</button></a>
+        <a href="busca.html" class="current"><button>Buscar e validar certificados</button></a>
+        <a href="links.html"><button>Links úteis</button></a>
+      </div>
     </div>
 
   </div>
 
-  <!-- Rodapé -->
   <div class="footer">
-    <img src="menu-logo_menor.png">
-    <img src="deceb_logo.png">
+    <img src="menu-logo_menor.png" alt="UFSJ">
+    <img src="deceb_logo.png" alt="DECEB">
   </div>
-
 </div>
 
-<!-- SCRIPT ORIGINAL (INTACTO) -->
 <script>
 let dados = [];
 
 const URL = "https://opensheet.elk.sh/1MNP35RsZyiFmfuxJtObvU_JEFJWIShf65aMquWNm-pw/pagina1";
 
+// Carrega dados do Google Sheets
 async function carregarDados() {
     try {
         const resposta = await fetch(URL);
         dados = await resposta.json();
 
+        console.log("Certificados carregados:", dados.length);
+
+        // Ativa botões após carregar
         document.getElementById("btnNome").disabled = false;
         document.getElementById("btnCodigo").disabled = false;
 
@@ -217,6 +382,7 @@ async function carregarDados() {
 
 carregarDados();
 
+// Validação por código
 function validarCodigo() {
     const codigo = document.getElementById("codigoInput").value.trim();
     const div = document.getElementById("resultadoCodigo");
@@ -240,6 +406,7 @@ function validarCodigo() {
     }
 }
 
+// Busca por nome
 function buscarNome() {
     const nome = document.getElementById("nomeInput").value.trim().toLowerCase();
     const div = document.getElementById("resultadoNome");
@@ -266,6 +433,7 @@ function buscarNome() {
     }
 }
 
+// Enter para busca
 document.getElementById("nomeInput").addEventListener("keyup", function(event) {
     if (event.key === "Enter") buscarNome();
 });
