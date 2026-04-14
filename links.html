@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Links úteis GEMICRO / UFSJ</title>
+<title>Links úteis – GEMICRO / UFSJ</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
@@ -14,6 +14,11 @@
   --cor-botao-hover: #417a41;
   --fundo: #fffdee;
   --fonte-principal: 'Playfair Display', serif;
+  --borda-suave: #d8d2bf;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -23,35 +28,90 @@ body {
   color: var(--cor-texto);
 }
 
-/* Layout */
-.container {
+.page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.container {
+  flex: 1;
+  display: flex;
   align-items: center;
   justify-content: center;
+  padding: 60px 40px;
+  gap: 60px;
+}
+
+.left {
+  flex: 1;
+  max-width: 420px;
   text-align: center;
-  padding: 40px;
 }
 
-/* Título */
+.left img {
+  width: 100%;
+  max-width: 320px;
+}
+
+.title {
+  margin-top: 25px;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.content-box {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.panel {
+  background-color: rgba(255,255,255,0.38);
+  border: 1px solid var(--borda-suave);
+  border-radius: 16px;
+  padding: 28px 24px;
+}
+
 h1 {
-  font-size: 32px;
-  margin-bottom: 20px;
+  margin: 0 0 20px 0;
+  text-align: center;
 }
 
-/* Texto */
-p {
-  font-size: 18px;
-  margin-bottom: 30px;
+/* Lista de links */
+.link-item {
+  margin-bottom: 18px;
+}
+
+.link-item a {
+  display: block;
+  padding: 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  background-color: #ffffff;
+  color: var(--cor-texto);
+  border: 1px solid #ddd;
+  transition: 0.2s;
+}
+
+.link-item a:hover {
+  background-color: #f0f0f0;
 }
 
 /* Botão voltar */
 button {
-  padding: 12px 20px;
-  font-size: 16px;
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
   border: none;
-  border-radius: 10px;
   background-color: var(--cor-botao);
   color: white;
   cursor: pointer;
@@ -60,20 +120,82 @@ button {
 button:hover {
   background-color: var(--cor-botao-hover);
 }
+
+.footer {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 25px 0;
+}
+
+.footer img {
+  height: 55px;
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="page">
 
-  <h1>Links úteis</h1>
+  <div class="container">
 
-  <p>Esta página ainda está sendo desenvolvida.</p>
+    <div class="left">
+      <img src="logo_oficial_sem_fundo.png">
+      <div class="title">GEMicro UFSJ</div>
+    </div>
 
-  <a href="index.html">
-    <button>Voltar para a página inicial</button>
-  </a>
+    <div class="right">
+      <div class="content-box">
+
+        <div class="panel">
+          <h1>Links úteis</h1>
+
+          <div class="link-item">
+            <a href="https://www.embrapa.br/" target="_blank">
+              Embrapa
+            </a>
+          </div>
+
+          <div class="link-item">
+            <a href="https://www.gov.br/cnpq/" target="_blank">
+              CNPq
+            </a>
+          </div>
+
+          <div class="link-item">
+            <a href="https://www.periodicos.capes.gov.br/" target="_blank">
+              Portal de Periódicos CAPES
+            </a>
+          </div>
+
+          <div class="link-item">
+            <a href="https://scholar.google.com.br/" target="_blank">
+              Google Acadêmico
+            </a>
+          </div>
+
+        </div>
+
+        <a href="index.html">
+          <button>Voltar para a página inicial</button>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <img src="menu-logo_menor.png">
+    <img src="deceb_logo.png">
+  </div>
 
 </div>
 
