@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEMICRO / UFSJ</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cor-texto: #3a2426;
+  --cor-botao: #529552;
+  --cor-botao-hover: #417a41;
+  --fundo: #fffdee;
+  --fonte-principal: 'Playfair Display', serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fonte-principal);
+  background-color: var(--fundo);
+  color: var(--cor-texto);
+}
+
+/* Layout */
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+}
+
+/* Título */
+h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+/* Texto */
+p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+/* Botão voltar */
+button {
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--cor-botao);
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--cor-botao-hover);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>Nossa História</h1>
+
+  <p>Esta página ainda está sendo desenvolvida.</p>
+
+  <a href="index.html">
+    <button>Voltar para a página inicial</button>
+  </a>
+
+</div>
+
+</body>
+</html>
