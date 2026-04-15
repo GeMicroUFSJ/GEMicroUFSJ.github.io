@@ -14,6 +14,11 @@
   --cor-botao-hover: #417a41;
   --fundo: #fffdee;
   --fonte-principal: 'Playfair Display', serif;
+  --borda-suave: #d8d2bf;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -29,41 +34,111 @@ body {
   flex-direction: column;
 }
 
+/* mesma base da página atividades */
 .container {
   flex: 1;
   display: flex;
+  align-items: center;
   justify-content: center;
-  padding: 60px 20px;
+  padding: 60px 40px;
+  gap: 60px;
 }
 
-.content {
-  max-width: 700px;
-  width: 100%;
+.left {
+  flex: 1;
+  max-width: 420px;
   text-align: center;
 }
 
-h1 {
-  margin-bottom: 20px;
+.left img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
 }
 
-p {
+.title {
+  margin-top: 25px;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.content-box {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.panel {
+  background-color: rgba(255, 255, 255, 0.38);
+  border: 1px solid var(--borda-suave);
+  border-radius: 16px;
+  padding: 28px 24px;
+}
+
+h1 {
+  margin: 0 0 20px 0;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.texto {
   font-size: 17px;
-  line-height: 1.6;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+.texto p {
+  margin-top: 0;
+  margin-bottom: 16px;
 }
 
 button {
-  margin-top: 30px;
   width: 100%;
   padding: 16px;
-  border-radius: 12px;
+  font-size: 17px;
   border: none;
+  border-radius: 12px;
   background-color: var(--cor-botao);
-  color: white;
+  color: #fff;
+  font-family: var(--fonte-principal);
   cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  transition: all 0.2s ease;
 }
 
 button:hover {
   background-color: var(--cor-botao-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    padding: 40px 20px;
+    gap: 40px;
+  }
+
+  .left, .right {
+    max-width: 100%;
+  }
+
+  .content-box {
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 26px;
+  }
 }
 </style>
 </head>
@@ -75,20 +150,34 @@ button:hover {
   <!-- HEADER -->
   <div id="header-container"></div>
 
-  <!-- CONTEÚDO -->
   <div class="container">
-    <div class="content">
 
-      <h1>Nossa história</h1>
-
-      <p>Esta página está em construção.</p>
-      <p>Em breve, aqui serão apresentadas informações sobre a criação do grupo, sua trajetória e suas principais contribuições nas áreas de microbiologia agrícola e ambiental.</p>
-
-      <a href="index.html">
-        <button>Voltar para a página inicial</button>
-      </a>
-
+    <!-- ESQUERDA -->
+    <div class="left">
+      <img src="logo_oficial_sem_fundo.png" alt="GEMICRO">
+      <div class="title">GEMicro UFSJ</div>
     </div>
+
+    <!-- DIREITA -->
+    <div class="right">
+      <div class="content-box">
+
+        <div class="panel">
+          <h1>Nossa história</h1>
+
+          <div class="texto">
+            <p>Esta página está em construção.</p>
+            <p>Em breve, aqui serão apresentadas informações sobre a criação do grupo, sua trajetória e suas principais contribuições nas áreas de microbiologia agrícola e ambiental.</p>
+          </div>
+        </div>
+
+        <a href="index.html">
+          <button>Voltar para a página inicial</button>
+        </a>
+
+      </div>
+    </div>
+
   </div>
 
   <!-- FOOTER -->
@@ -96,7 +185,6 @@ button:hover {
 
 </div>
 
-<!-- SCRIPT HEADER + FOOTER -->
 <script>
 fetch("header.html")
   .then(res => res.text())
