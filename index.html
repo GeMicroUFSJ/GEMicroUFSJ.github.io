@@ -162,11 +162,44 @@ body {
     font-size: 26px;
   }
 }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 30px;
+  border-bottom: 1px solid #e5dcc5;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-left img {
+  height: 40px;
+}
+
+.nome-grupo {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-right img {
+  height: 42px;
+}
 </style>
 </head>
 
 <body>
 
+  <div id="header-container"></div>
 <div class="page">
 
   <div class="container">
@@ -203,5 +236,12 @@ fetch("footer.html")
   });
 </script>
 
+  <script>
+fetch("header.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("header-container").innerHTML = data;
+  });
+</script>
 </body>
 </html>
