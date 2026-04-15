@@ -34,7 +34,6 @@ body {
   flex-direction: column;
 }
 
-/* Mesma base da home */
 .container {
   flex: 1;
   display: flex;
@@ -84,7 +83,7 @@ body {
 }
 
 h1 {
-  margin: 0 0 24px 0;
+  margin: 0 0 20px 0;
   font-size: 30px;
   font-weight: 600;
   text-align: center;
@@ -94,37 +93,53 @@ h1 {
   margin-bottom: 28px;
 }
 
-.section:last-of-type {
+.section:last-child {
   margin-bottom: 0;
 }
 
 .section-title {
   text-align: center;
-  font-size: 21px;
-  font-weight: 600;
+  font-size: 22px;
   margin-bottom: 12px;
 }
 
 .input-row {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 input {
   width: 100%;
-  padding: 14px 16px;
-  border-radius: 12px;
-  border: 1px solid #cfc7b6;
+  max-width: 300px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
   font-size: 16px;
   font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  outline: none;
 }
 
-input:focus {
-  border-color: var(--cor-botao);
+.resultado {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.resultado a {
+  color: var(--cor-botao);
+  text-decoration: none;
+}
+
+.resultado a:hover {
+  text-decoration: underline;
+}
+
+.divisor {
+  border: none;
+  border-top: 1px solid #d7d0bf;
+  margin: 30px 0;
 }
 
 button {
@@ -151,40 +166,51 @@ button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
 }
 
-.resultado {
-  margin-top: 18px;
-  text-align: center;
-  font-size: 17px;
-  line-height: 1.6;
+.acao-botao {
+  width: auto;
+  min-width: 120px;
+  padding: 10px 16px;
+  font-size: 16px;
+  border-radius: 8px;
 }
 
-.resultado a {
-  color: var(--cor-botao);
-  text-decoration: none;
+.voltar {
+  width: 100%;
 }
 
-.resultado a:hover {
-  text-decoration: underline;
-}
-
-.divisor {
-  border: none;
-  border-top: 1px solid #d7d0bf;
-  margin: 26px 0;
-}
-
+/* FOOTER FINAL */
 .footer {
   display: flex;
   justify-content: center;
-  gap: 30px;
-  padding: 25px 0;
+  padding: 10px 20px 15px;
+  margin-top: -10px;
 }
 
-.footer img {
-  height: 55px;
+.contato {
+  display: flex;
+  gap: 18px;
+}
+
+.contato a {
+  opacity: 0.7;
+  transition: 0.2s;
+}
+
+.contato a:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.contato svg {
+  width: 40px;
+  height: 40px;
+  fill: #3a2426;
+}
+
+.contato svg:hover {
+  fill: #529552;
 }
 
 @media (max-width: 900px) {
@@ -205,6 +231,19 @@ button:disabled {
   .title {
     font-size: 26px;
   }
+
+  .input-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  input {
+    max-width: 100%;
+  }
+
+  .acao-botao {
+    width: 100%;
+  }
 }
 </style>
 </head>
@@ -213,13 +252,18 @@ button:disabled {
 
 <div class="page">
 
+  <!-- HEADER -->
+  <div id="header-container"></div>
+
   <div class="container">
 
+    <!-- ESQUERDA -->
     <div class="left">
       <img src="logo_oficial_sem_fundo.png" alt="GEMICRO">
       <div class="title">GEMicro UFSJ</div>
     </div>
 
+    <!-- DIREITA -->
     <div class="right">
       <div class="content-box">
 
@@ -231,7 +275,7 @@ button:disabled {
 
             <div class="input-row">
               <input type="text" id="nomeInput" placeholder="Ex.: Cristiane">
-              <button id="btnNome" onclick="buscarNome()" disabled>Buscar</button>
+              <button class="acao-botao" id="btnNome" onclick="buscarNome()" disabled>Buscar</button>
             </div>
 
             <div id="resultadoNome" class="resultado"></div>
@@ -244,7 +288,7 @@ button:disabled {
 
             <div class="input-row">
               <input type="text" id="codigoInput" placeholder="Ex.: GEMICRO-UFSJ-000001">
-              <button id="btnCodigo" onclick="validarCodigo()" disabled>Validar</button>
+              <button class="acao-botao" id="btnCodigo" onclick="validarCodigo()" disabled>Validar</button>
             </div>
 
             <div id="resultadoCodigo" class="resultado"></div>
@@ -252,7 +296,7 @@ button:disabled {
         </div>
 
         <a href="index.html">
-          <button>Voltar para a página inicial</button>
+          <button class="voltar">Voltar para a página inicial</button>
         </a>
 
       </div>
@@ -260,23 +304,49 @@ button:disabled {
 
   </div>
 
+  <!-- FOOTER -->
   <div class="footer">
-    <img src="menu-logo_menor.png" alt="UFSJ">
-    <img src="deceb_logo.png" alt="DECEB">
+    <div class="contato">
+
+      <a href="https://www.instagram.com/gemicro_ufsj/" target="_blank" title="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M7.75 2C4.58 2 2 4.58 2 7.75v8.5C2 19.42 4.58 22 7.75 22h8.5C19.42 22 22 19.42 22 16.25v-8.5C22 4.58 19.42 2 16.25 2h-8.5zm0 2h8.5C18.01 4 20 5.99 20 7.75v8.5c0 1.76-1.99 3.75-3.75 3.75h-8.5C5.99 20 4 18.01 4 16.25v-8.5C4 5.99 5.99 4 7.75 4zm8.25 1.5a1 1 0 100 2 1 1 0 000-2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
+        </svg>
+      </a>
+
+      <a href="mailto:labmicroambiental.ufsj@gmail.com" title="E-mail">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M2 4h20v16H2V4zm2 2v.01L12 13l8-6.99V6H4zm16 2.24l-7.4 5.8a1 1 0 01-1.2 0L4 8.24V18h16V8.24z"/>
+        </svg>
+      </a>
+
+    </div>
   </div>
 
 </div>
+
+<script>
+fetch("header.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("header-container").innerHTML = data;
+  });
+</script>
 
 <script>
 let dados = [];
 
 const URL = "https://opensheet.elk.sh/1MNP35RsZyiFmfuxJtObvU_JEFJWIShf65aMquWNm-pw/pagina1";
 
+// Carrega dados do Google Sheets
 async function carregarDados() {
     try {
         const resposta = await fetch(URL);
         dados = await resposta.json();
 
+        console.log("Certificados carregados:", dados.length);
+
+        // Ativa botões após carregar
         document.getElementById("btnNome").disabled = false;
         document.getElementById("btnCodigo").disabled = false;
 
@@ -287,6 +357,7 @@ async function carregarDados() {
 
 carregarDados();
 
+// Validação por código
 function validarCodigo() {
     const codigo = document.getElementById("codigoInput").value.trim();
     const div = document.getElementById("resultadoCodigo");
@@ -310,6 +381,7 @@ function validarCodigo() {
     }
 }
 
+// Busca por nome
 function buscarNome() {
     const nome = document.getElementById("nomeInput").value.trim().toLowerCase();
     const div = document.getElementById("resultadoNome");
@@ -336,6 +408,7 @@ function buscarNome() {
     }
 }
 
+// Enter para busca
 document.getElementById("nomeInput").addEventListener("keyup", function(event) {
     if (event.key === "Enter") buscarNome();
 });
