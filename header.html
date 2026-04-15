@@ -2,7 +2,9 @@
 
   <div class="header-left">
     <img src="logo_oficial_sem_fundo.png" alt="GEMICRO">
-    <span class="nome-grupo">GEMicro UFSJ</span>
+    <span class="nome-grupo">
+      Grupo de Estudos em Microbiologia Agrícola e Ambiental
+    </span>
   </div>
 
   <div class="header-right">
@@ -11,3 +13,64 @@
   </div>
 
 </div>
+
+<style>
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 30px;
+  border-bottom: 1px solid #e5dcc5;
+  background-color: #fffdee;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-left img {
+  height: 42px;
+}
+
+.nome-grupo {
+  font-size: 16px;
+  font-weight: 600;
+  max-width: 420px;
+  line-height: 1.3;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-right img {
+  height: 44px;
+  transition: 0.2s;
+}
+
+.header-right img:hover {
+  transform: scale(1.05);
+}
+
+/* RESPONSIVO */
+@media (max-width: 700px) {
+  .header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .header-left {
+    flex-direction: column;
+  }
+
+  .nome-grupo {
+    max-width: 100%;
+    font-size: 14px;
+  }
+}
+</style>
