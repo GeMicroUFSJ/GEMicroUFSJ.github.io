@@ -39,7 +39,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 40px;
+  padding: 60px 80px;
   gap: 60px;
 }
 
@@ -52,7 +52,6 @@ body {
 .left img {
   width: 100%;
   max-width: 320px;
-  height: auto;
 }
 
 .title {
@@ -62,85 +61,110 @@ body {
 }
 
 .right {
-  flex: 1;
+  flex: 2.5;
   display: flex;
   justify-content: center;
 }
 
 .content-box {
   width: 100%;
-  max-width: 420px;
+  max-width: 900px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 25px;
 }
 
 .panel {
   background-color: rgba(255, 255, 255, 0.38);
   border: 1px solid var(--borda-suave);
   border-radius: 16px;
-  padding: 28px 24px;
+  padding: 28px;
 }
 
 h1 {
-  margin: 0 0 20px 0;
-  font-size: 30px;
-  font-weight: 600;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* COORDENAÇÃO */
+.coordenacao {
   text-align: center;
 }
 
-.texto {
-  font-size: 17px;
-  line-height: 1.7;
-  text-align: justify;
+.coordenacao img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
 }
 
-.texto p {
-  margin-top: 0;
-  margin-bottom: 16px;
+.nome {
+  font-weight: 600;
 }
 
+.info {
+  font-size: 15px;
+}
+
+/* GRID ALUNOS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.card {
+  text-align: center;
+}
+
+.card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.lattes {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: 14px;
+  color: var(--cor-botao);
+  text-decoration: none;
+}
+
+.lattes:hover {
+  text-decoration: underline;
+}
+
+/* BOTÃO */
 button {
   width: 100%;
   padding: 16px;
-  font-size: 17px;
-  border: none;
   border-radius: 12px;
+  border: none;
   background-color: var(--cor-botao);
-  color: #fff;
+  color: white;
   font-family: var(--fonte-principal);
   cursor: pointer;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
-  transition: all 0.2s ease;
 }
 
 button:hover {
   background-color: var(--cor-botao-hover);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
 }
 
-/* FOOTER FINAL */
+/* FOOTER */
 .footer {
   display: flex;
   justify-content: center;
   padding: 10px 20px 15px;
-  margin-top: -10px;
 }
 
 .contato {
   display: flex;
   gap: 18px;
-}
-
-.contato a {
-  opacity: 0.7;
-  transition: 0.2s;
-}
-
-.contato a:hover {
-  opacity: 1;
-  transform: scale(1.15);
 }
 
 .contato svg {
@@ -149,27 +173,15 @@ button:hover {
   fill: #3a2426;
 }
 
-.contato svg:hover {
-  fill: #529552;
-}
-
+/* RESPONSIVO */
 @media (max-width: 900px) {
   .container {
     flex-direction: column;
     padding: 40px 20px;
-    gap: 40px;
   }
 
-  .left, .right {
-    max-width: 100%;
-  }
-
-  .content-box {
-    max-width: 100%;
-  }
-
-  .title {
-    font-size: 26px;
+  .grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>
@@ -179,66 +191,91 @@ button:hover {
 
 <div class="page">
 
-  <!-- HEADER -->
-  <div id="header-container"></div>
+<div id="header-container"></div>
 
-  <div class="container">
+<div class="container">
 
-    <!-- ESQUERDA -->
-    <div class="left">
-      <img src="logo_oficial_sem_fundo.png" alt="GEMICRO">
-      <div class="title">GEMicro UFSJ</div>
-    </div>
+<div class="left">
+  <img src="logo_oficial_sem_fundo.png">
+  <div class="title">GEMicro UFSJ</div>
+</div>
 
-    <!-- DIREITA -->
-    <div class="right">
-      <div class="content-box">
+<div class="right">
+<div class="content-box">
 
-        <div class="panel">
-          <h1>Quem somos</h1>
+<div class="panel">
+<h1>Quem somos</h1>
 
-          <div class="texto">
-            <p>Esta página está em construção.</p>
-            <p>Em breve, aqui serão apresentados os integrantes do grupo, suas áreas de atuação e suas contribuições para as atividades desenvolvidas no GEMicro.</p>
-          </div>
-        </div>
+<!-- COORDENAÇÃO -->
+<div class="coordenacao">
+  <img src="foto-coordenadora.jpg">
 
-        <a href="index.html">
-          <button>Voltar para a página inicial</button>
-        </a>
+  <div class="nome">Profa. Cristiane Alcantara</div>
+  <div class="info">Coordenação</div>
+  <div class="info">Bioengenharia / Microbiologia</div>
 
-      </div>
-    </div>
+  <a class="lattes" href="#" target="_blank">Currículo Lattes</a>
+</div>
 
-  </div>
+<!-- ALUNOS -->
+<div class="grid">
 
-  <!-- FOOTER -->
-  <div class="footer">
-    <div class="contato">
+<div class="card">
+  <img src="foto1.jpg">
+  <div class="nome">Nome do aluno</div>
+  <div class="info">Função no grupo</div>
+  <div class="info">Curso</div>
+</div>
 
-      <a href="https://www.instagram.com/gemicro_ufsj/" target="_blank" title="Instagram">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M7.75 2C4.58 2 2 4.58 2 7.75v8.5C2 19.42 4.58 22 7.75 22h8.5C19.42 22 22 19.42 22 16.25v-8.5C22 4.58 19.42 2 16.25 2h-8.5zm0 2h8.5C18.01 4 20 5.99 20 7.75v8.5c0 1.76-1.99 3.75-3.75 3.75h-8.5C5.99 20 4 18.01 4 16.25v-8.5C4 5.99 5.99 4 7.75 4zm8.25 1.5a1 1 0 100 2 1 1 0 000-2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
-        </svg>
-      </a>
+<div class="card">
+  <img src="foto2.jpg">
+  <div class="nome">Nome do aluno</div>
+  <div class="info">Função no grupo</div>
+  <div class="info">Curso</div>
+</div>
 
-      <a href="mailto:labmicroambiental.ufsj@gmail.com" title="E-mail">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M2 4h20v16H2V4zm2 2v.01L12 13l8-6.99V6H4zm16 2.24l-7.4 5.8a1 1 0 01-1.2 0L4 8.24V18h16V8.24z"/>
-        </svg>
-      </a>
+<div class="card">
+  <img src="foto3.jpg">
+  <div class="nome">Nome do aluno</div>
+  <div class="info">Função no grupo</div>
+  <div class="info">Curso</div>
+</div>
 
-    </div>
-  </div>
+</div>
+
+</div>
+
+<a href="index.html">
+<button>Voltar para a página inicial</button>
+</a>
+
+</div>
+</div>
+
+</div>
+
+<div class="footer">
+<div class="contato">
+
+<a href="https://www.instagram.com/gemicro_ufsj/" target="_blank">
+<svg viewBox="0 0 24 24"><path d="M7.75 2C4.58 2 2 4.58 2 7.75v8.5C2 19.42 4.58 22 7.75 22h8.5C19.42 22 22 19.42 22 16.25v-8.5C22 4.58 19.42 2 16.25 2h-8.5z"/></svg>
+</a>
+
+<a href="mailto:labmicroambiental.ufsj@gmail.com">
+<svg viewBox="0 0 24 24"><path d="M2 4h20v16H2z"/></svg>
+</a>
+
+</div>
+</div>
 
 </div>
 
 <script>
 fetch("header.html")
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById("header-container").innerHTML = data;
-  });
+.then(res => res.text())
+.then(data => {
+document.getElementById("header-container").innerHTML = data;
+});
 </script>
 
 </body>
