@@ -125,7 +125,33 @@ h1 {
   border-radius: 12px;
   background-color: rgba(255, 255, 255, 0.55);
 }
+.link-material{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  text-decoration:none;
+  color:var(--cor-texto);
+  font-size:18px;
+  font-weight:600;
+  transition:.2s;
+}
 
+.link-material:hover{
+  color:var(--cor-botao);
+}
+
+.link-material svg{
+  width:28px;
+  height:28px;
+  fill:#b52d2d;
+  flex-shrink:0;
+  transition:.2s;
+}
+
+.link-material:hover svg{
+  fill:#d64545;
+}
+  
 button {
   width: 100%;
   padding: 16px;
@@ -224,15 +250,28 @@ button:hover {
           <h1>Materiais</h1>
 
           <div class="texto">
-            <p>Esta página está em construção.</p>
-            <p>Em breve, aqui serão disponibilizados materiais produzidos pelo grupo, como apostilas, documentos institucionais, estatuto e outros conteúdos de apoio.</p>
-          </div>
+  <p>Nesta página estão reunidos documentos e materiais produzidos pelo GEMicro para consulta da comunidade acadêmica.</p>
+</div>
 
-          <div class="lista-materiais">
-            <!-- aqui você vai inserir materiais depois -->
-          </div>
+<div class="lista-materiais">
 
-        </div>
+  <div class="item-material">
+
+    <a href="documentos/estatuto_gemicro.pdf"
+       target="_blank"
+       class="link-material">
+
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M6 2h8l4 4v16H6V2zm8 1.5V7h3.5L14 3.5zM8 11h8v1.5H8V11zm0 4h8v1.5H8V15zm0-8h4v1.5H8V7z"/>
+      </svg>
+
+      <span>Estatuto GEMicro</span>
+
+    </a>
+
+  </div>
+
+</div>
 
         <a href="index.html">
           <button>Voltar para a página inicial</button>
