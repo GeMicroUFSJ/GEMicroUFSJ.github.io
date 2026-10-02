@@ -72,42 +72,72 @@ body {
 }
 
 .right {
-  flex: 1;
+  flex: 2;
   display: flex;
   justify-content: center;
 }
 
 .content-box {
   width: 100%;
-  max-width: 420px;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 25px;
 }
 
 .panel {
   background-color: rgba(255, 255, 255, 0.38);
   border: 1px solid var(--borda-suave);
   border-radius: 16px;
-  padding: 28px 24px;
+  padding: 35px 30px;
 }
 
 h1 {
-  margin: 0 0 20px 0;
+  margin: 0 0 25px 0;
   font-size: 30px;
   font-weight: 600;
   text-align: center;
 }
 
-.texto {
-  font-size: 17px;
-  line-height: 1.7;
-  text-align: justify;
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  color: var(--cor-texto);
 }
 
-.texto p {
-  margin-top: 0;
-  margin-bottom: 16px;
+/* DIVISOR */
+.divisor {
+  border: 0;
+  height: 1px;
+  background-color: var(--borda-suave);
+  margin: 30px 0;
+}
+
+/* LISTA DE PROJETOS */
+.lista-projetos {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.lista-projetos li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 14px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.lista-projetos li::before {
+  content: "•";
+  color: var(--cor-botao);
+  font-weight: bold;
+  font-size: 20px;
+  position: absolute;
+  left: 0;
+  top: -2px;
 }
 
 button {
@@ -207,10 +237,24 @@ button:hover {
         <div class="panel">
           <h1>Atividades</h1>
 
-          <div class="texto">
-            <p>Esta página está em construção.</p>
-            <p>Em breve, aqui serão apresentadas as atividades desenvolvidas pelo grupo, incluindo cursos, eventos, projetos e ações de extensão.</p>
-          </div>
+          <!-- PROJETOS DE EXTENSÃO -->
+          <h2>Projetos de Extensão</h2>
+          <ul class="lista-projetos">
+            <li>Cultivando Ciência</li>
+            <li>Cultivando diálogos na escola</li>
+          </ul>
+
+          <hr class="divisor">
+
+          <!-- PROJETOS DE PESQUISA -->
+          <h2>Projetos de Pesquisa</h2>
+          <ul class="lista-projetos">
+            <li>Impacto de inibidores de urease em bactérias promotoras de crescimento de plantas e sua influência no desenvolvimento inicial de plantas de milho</li>
+            <li>Diagnóstico inicial e monitoramento de atributos químicos e microbiológicos do solo em área destinada à implantação de unidade de agricultura regenerativa</li>
+            <li>Uso de escória de siderúrgica como fonte de silício e seu impacto em atributos químicos e microbiológicos do solo</li>
+            <li>Prospecção e caracterização de bactérias solubilizadoras de silício</li>
+            <li>Atividade antifúngica de inibidores de urease sobre fungos fitopatogênicos</li>
+          </ul>
         </div>
 
         <a href="index.html">
